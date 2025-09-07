@@ -1,0 +1,48 @@
+{
+  "name": "ecommerce-angular",
+  "private": true,
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "start:backend": "cd backend && node server.js",
+    "dev": "concurrently \"npm run start:backend\" \"npm run start\""
+  },
+  "dependencies": {
+    "@angular/animations": "^20.0.0",
+    "@angular/cdk": "^19.1.6",
+    "@angular/common": "^20.0.0",
+    "@angular/compiler": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/forms": "^20.0.0",
+    "@angular/material": "^19.1.6",
+    "@angular/platform-browser": "^20.0.0",
+    "@angular/router": "^20.0.0",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^9.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.4",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.18",
+    "nodemon": "^3.1.9",
+    "rxjs": "^7.8.1",
+    "tailwindcss": "^3.4.17",
+    "tslib": "^2.5.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.0.0",
+    "@angular/cli": "^20.0.0",
+    "@angular/compiler-cli": "^20.0.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/multer": "^1.4.12",
+    "@types/nodemailer": "^6.4.19",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "typescript": "^5.8.2"
+  }
+}

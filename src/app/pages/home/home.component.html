@@ -1,0 +1,211 @@
+<div class="min-h-screen">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          Fashion for Young Adults
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-indigo-100">
+          Discover trendy casual wear for men and women aged 18-35
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            routerLink="/products"
+            class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+          >
+            Shop Now
+          </a>
+          <a
+            routerLink="/products?category=men"
+            class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors"
+          >
+            Men's Collection
+          </a>
+          <a
+            routerLink="/products?category=women"
+            class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors"
+          >
+            Women's Collection
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin Dashboard Section -->
+  <div *ngIf="isAdmin" class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-medium text-yellow-800">Admin Dashboard</h3>
+          <div class="mt-2 text-sm text-yellow-700">
+            <p>You have {{ pendingOrders.length }} pending orders and {{ pendingTestimonials.length }} testimonials to review.</p>
+            <div class="mt-2">
+              <a routerLink="/admin/orders" class="font-medium underline hover:text-yellow-600">View Orders</a>
+              <span class="mx-2">•</span>
+              <a routerLink="/admin/testimonials" class="font-medium underline hover:text-yellow-600">Review Testimonials</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categories Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Shop by Category</h2>
+        <p class="text-lg text-gray-600">Find your perfect style in our curated collections</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Men's Category -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="h-64 bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+            <div class="text-center text-white">
+              <h3 class="text-3xl font-bold mb-2">Men's Collection</h3>
+              <p class="text-blue-100">Casual wear for men 18-35</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-lg font-semibold text-gray-900 mb-3">Categories</h4>
+            <div class="grid grid-cols-2 gap-2">
+              <a routerLink="/products?category=men&subcategory=shirts" class="text-sm text-gray-600 hover:text-indigo-600">Shirts</a>
+              <a routerLink="/products?category=men&subcategory=t-shirts" class="text-sm text-gray-600 hover:text-indigo-600">T-Shirts</a>
+              <a routerLink="/products?category=men&subcategory=pants" class="text-sm text-gray-600 hover:text-indigo-600">Pants</a>
+              <a routerLink="/products?category=men" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">View All</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Women's Category -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="h-64 bg-gradient-to-br from-pink-500 to-purple-700 flex items-center justify-center">
+            <div class="text-center text-white">
+              <h3 class="text-3xl font-bold mb-2">Women's Collection</h3>
+              <p class="text-pink-100">Casual wear for women 18-35</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-lg font-semibold text-gray-900 mb-3">Categories</h4>
+            <div class="grid grid-cols-2 gap-2">
+              <a routerLink="/products?category=women&subcategory=shirts" class="text-sm text-gray-600 hover:text-indigo-600">Shirts</a>
+              <a routerLink="/products?category=women&subcategory=t-shirts" class="text-sm text-gray-600 hover:text-indigo-600">T-Shirts</a>
+              <a routerLink="/products?category=women&subcategory=pants" class="text-sm text-gray-600 hover:text-indigo-600">Pants</a>
+              <a routerLink="/products?category=women" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">View All</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Featured Products</h2>
+        <p class="text-lg text-gray-600">Handpicked items just for you</p>
+      </div>
+
+      <!-- Loading State -->
+      <div *ngIf="isLoading" class="flex justify-center items-center py-12">
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+        <span class="ml-2 text-gray-600">Loading products...</span>
+      </div>
+
+      <!-- Products Grid -->
+      <div *ngIf="!isLoading && featuredProducts.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div *ngFor="let product of featuredProducts" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <a [routerLink]="['/products', product._id]">
+            <img
+              [src]="product.photos[0]"
+              [alt]="product.name"
+              class="w-full h-48 object-cover"
+            >
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ product.name }}</h3>
+              <p class="text-gray-600 text-sm mb-2 line-clamp-2">{{ product.description }}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xl font-bold text-indigo-600">{{ formatCurrency(product.price) }}</span>
+                <span *ngIf="product.stock <= 3 && product.stock > 0" class="text-sm text-orange-600">
+                  Only {{ product.stock }} left
+                </span>
+                <span *ngIf="product.stock === 0" class="text-sm text-red-600">
+                  Out of Stock
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="!isLoading && featuredProducts.length === 0" class="text-center py-12">
+        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+        <h3 class="mt-2 text-sm font-medium text-gray-900">No featured products</h3>
+        <p class="mt-1 text-sm text-gray-500">Check back later for new arrivals.</p>
+      </div>
+
+      <div class="text-center mt-8">
+        <a
+          routerLink="/products"
+          class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+        >
+          View All Products
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
+        <p class="text-lg text-gray-600">We're committed to providing the best shopping experience</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Free Shipping</h3>
+          <p class="text-gray-600">Free delivery to all locations in Egypt</p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">14-Day Returns</h3>
+          <p class="text-gray-600">Easy returns and exchanges within 14 days</p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Pay on Delivery</h3>
+          <p class="text-gray-600">Pay when you receive your order</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,49 @@
+/* Profile component specific styles */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form validation styles */
+.border-red-300 {
+  border-color: #fca5a5;
+}
+
+.text-red-600 {
+  color: #dc2626;
+}
+
+/* Focus states */
+.focus\:ring-indigo-500:focus {
+  --tw-ring-color: #6366f1;
+}
+
+.focus\:border-indigo-500:focus {
+  border-color: #6366f1;
+}
+
+/* Button hover states */
+.hover\:bg-indigo-700:hover {
+  background-color: #4338ca;
+}
+
+.hover\:bg-red-700:hover {
+  background-color: #b91c1c;
+}
+
+/* Disabled states */
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}

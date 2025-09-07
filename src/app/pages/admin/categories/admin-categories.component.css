@@ -1,0 +1,66 @@
+/* Admin Categories component specific styles */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form validation styles */
+.border-red-300 {
+  border-color: #fca5a5;
+}
+
+.text-red-600 {
+  color: #dc2626;
+}
+
+/* Focus states */
+.focus\:ring-indigo-500:focus {
+  --tw-ring-color: #6366f1;
+}
+
+.focus\:border-indigo-500:focus {
+  border-color: #6366f1;
+}
+
+/* Hover states */
+.hover\:bg-gray-50:hover {
+  background-color: #f9fafb;
+}
+
+.hover\:text-indigo-900:hover {
+  color: #312e81;
+}
+
+.hover\:text-red-900:hover {
+  color: #7f1d1d;
+}
+
+.hover\:bg-indigo-700:hover {
+  background-color: #4338ca;
+}
+
+/* Disabled states */
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+
+/* Status colors */
+.text-green-600 {
+  color: #059669;
+}
+
+.text-red-600 {
+  color: #dc2626;
+}

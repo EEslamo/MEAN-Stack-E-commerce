@@ -1,0 +1,34 @@
+/* Admin Orders specific styles */
+.order-table {
+  transition: all 0.3s ease;
+}
+
+.order-row:hover {
+  background-color: #f9fafb;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.action-button {
+  transition: color 0.2s ease;
+}
+
+.action-button:hover {
+  text-decoration: underline;
+}
+
+/* Loading animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}

@@ -1,0 +1,185 @@
+<div class="min-h-screen bg-gray-50 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="flex justify-center items-center py-12">
+      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+      <span class="ml-2 text-gray-600">Loading product...</span>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error && !isLoading" class="text-center py-12">
+      <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+      </svg>
+      <h3 class="mt-2 text-sm font-medium text-gray-900">Product not found</h3>
+      <p class="mt-1 text-sm text-gray-500">{{ error }}</p>
+      <div class="mt-6">
+        <a
+          routerLink="/products"
+          class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+        >
+          Back to Products
+        </a>
+      </div>
+    </div>
+
+    <!-- Product Details -->
+    <div *ngIf="product && !isLoading" class="bg-white shadow rounded-lg">
+      <div class="px-4 py-5 sm:p-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Product Images -->
+          <div>
+            <div class="aspect-w-1 aspect-h-1 w-full">
+              <img
+                [src]="product.photos[selectedImageIndex]"
+                [alt]="product.name"
+                class="w-full h-96 object-cover rounded-lg"
+              >
+            </div>
+            
+            <!-- Thumbnail Images -->
+            <div *ngIf="product.photos.length > 1" class="mt-4 grid grid-cols-4 gap-2">
+              <button
+                *ngFor="let photo of product.photos; let i = index"
+                (click)="selectImage(i)"
+                [class]="selectedImageIndex === i ? 'ring-2 ring-indigo-500' : ''"
+                class="aspect-w-1 aspect-h-1 w-full rounded-lg overflow-hidden"
+              >
+                <img
+                  [src]="photo"
+                  [alt]="product.name"
+                  class="w-full h-20 object-cover"
+                >
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Info -->
+          <div>
+            <div class="mb-4">
+              <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                {{ typeof product.category === 'string' ? 'Category' : product.category.name }}
+              </span>
+            </div>
+
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">{{ product.name }}</h1>
+            
+            <div class="flex items-center space-x-4 mb-4">
+              <span class="text-3xl font-bold text-indigo-600">{{ formatCurrency(product.price) }}</span>
+              <span *ngIf="product.originalPrice && product.originalPrice > product.price" 
+                    class="text-lg text-gray-500 line-through">
+                {{ formatCurrency(product.originalPrice) }}
+              </span>
+              <span *ngIf="product.discountPercentage && product.discountPercentage > 0"
+                    class="text-sm font-medium text-green-600 bg-green-100 px-2 py-1 rounded">
+                {{ product.discountPercentage }}% OFF
+              </span>
+            </div>
+
+            <div class="mb-4">
+              <span [class]="getStockStatusClass()" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium">
+                {{ getStockStatus() }}
+              </span>
+            </div>
+
+            <div class="mb-6">
+              <h3 class="text-lg font-medium text-gray-900 mb-2">Description</h3>
+              <p class="text-gray-600">{{ product.description }}</p>
+            </div>
+
+            <!-- Quantity and Add to Cart -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">Quantity</label>
+              <div class="flex items-center space-x-4">
+                <input
+                  type="number"
+                  [(ngModel)]="selectedQuantity"
+                  [min]="1"
+                  [max]="getMaxQuantity()"
+                  class="w-20 px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                <span class="text-sm text-gray-500">Max: {{ getMaxQuantity() }}</span>
+              </div>
+            </div>
+
+            <div class="flex space-x-4">
+              <button
+                (click)="addToCart()"
+                [disabled]="!canAddToCart()"
+                class="flex-1 bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 text-white px-6 py-3 rounded-md font-medium disabled:cursor-not-allowed"
+              >
+                {{ product.stock === 0 ? 'Out of Stock' : 'Add to Cart' }}
+              </button>
+              <button
+                routerLink="/products"
+                class="px-6 py-3 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50"
+              >
+                Back to Products
+              </button>
+            </div>
+
+            <!-- Product Details -->
+            <div class="mt-8 border-t border-gray-200 pt-8">
+              <h3 class="text-lg font-medium text-gray-900 mb-4">Product Details</h3>
+              <dl class="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">SKU</dt>
+                  <dd class="mt-1 text-sm text-gray-900">{{ product.sku || 'N/A' }}</dd>
+                </div>
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">Weight</dt>
+                  <dd class="mt-1 text-sm text-gray-900">{{ product.weight ? product.weight + ' kg' : 'N/A' }}</dd>
+                </div>
+                <div *ngIf="product.dimensions">
+                  <dt class="text-sm font-medium text-gray-500">Dimensions</dt>
+                  <dd class="mt-1 text-sm text-gray-900">
+                    {{ product.dimensions.length }} × {{ product.dimensions.width }} × {{ product.dimensions.height }} cm
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-sm font-medium text-gray-500">Tags</dt>
+                  <dd class="mt-1 text-sm text-gray-900">
+                    <span *ngFor="let tag of product.tags; let last = last" class="inline-block">
+                      {{ tag }}<span *ngIf="!last">, </span>
+                    </span>
+                    <span *ngIf="!product.tags || product.tags.length === 0">None</span>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    <div *ngIf="relatedProducts.length > 0" class="mt-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Products</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div *ngFor="let product of relatedProducts" 
+             class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <a [routerLink]="['/products', product._id]">
+            <img
+              [src]="product.photos[0]"
+              [alt]="product.name"
+              class="w-full h-48 object-cover"
+            >
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ product.name }}</h3>
+              <p class="text-gray-600 text-sm mb-2 line-clamp-2">{{ product.description }}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xl font-bold text-indigo-600">{{ formatCurrency(product.price) }}</span>
+                <span *ngIf="product.stock <= 3 && product.stock > 0" class="text-sm text-orange-600">
+                  Only {{ product.stock }} left
+                </span>
+                <span *ngIf="product.stock === 0" class="text-sm text-red-600">
+                  Out of Stock
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

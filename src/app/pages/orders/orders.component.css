@@ -1,0 +1,109 @@
+/* Orders component specific styles */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Status badge styles */
+.bg-yellow-100 {
+  background-color: #fef3c7;
+}
+
+.text-yellow-800 {
+  color: #92400e;
+}
+
+.bg-blue-100 {
+  background-color: #dbeafe;
+}
+
+.text-blue-800 {
+  color: #1e40af;
+}
+
+.bg-purple-100 {
+  background-color: #e9d5ff;
+}
+
+.text-purple-800 {
+  color: #6b21a8;
+}
+
+.bg-indigo-100 {
+  background-color: #e0e7ff;
+}
+
+.text-indigo-800 {
+  color: #3730a3;
+}
+
+.bg-green-100 {
+  background-color: #dcfce7;
+}
+
+.text-green-800 {
+  color: #166534;
+}
+
+.bg-red-100 {
+  background-color: #fee2e2;
+}
+
+.text-red-800 {
+  color: #991b1b;
+}
+
+.bg-gray-100 {
+  background-color: #f3f4f6;
+}
+
+.text-gray-800 {
+  color: #1f2937;
+}
+
+/* Hover states */
+.hover\:text-indigo-900:hover {
+  color: #312e81;
+}
+
+.hover\:text-red-900:hover {
+  color: #7f1d1d;
+}
+
+.hover\:bg-red-50:hover {
+  background-color: #fef2f2;
+}
+
+.hover\:bg-gray-50:hover {
+  background-color: #f9fafb;
+}
+
+.hover\:bg-indigo-700:hover {
+  background-color: #4338ca;
+}
+
+/* Focus states */
+.focus\:ring-indigo-500:focus {
+  --tw-ring-color: #6366f1;
+}
+
+.focus\:border-indigo-500:focus {
+  border-color: #6366f1;
+}
+
+/* Disabled states */
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}

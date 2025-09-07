@@ -1,0 +1,83 @@
+/* Products component specific styles */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hover effects */
+.hover\:shadow-lg:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.hover\:-translate-y-1:hover {
+  transform: translateY(-0.25rem);
+}
+
+.hover\:bg-gray-50:hover {
+  background-color: #f9fafb;
+}
+
+.hover\:bg-indigo-700:hover {
+  background-color: #4338ca;
+}
+
+.hover\:bg-green-700:hover {
+  background-color: #15803d;
+}
+
+/* Focus states */
+.focus\:ring-indigo-500:focus {
+  --tw-ring-color: #6366f1;
+}
+
+.focus\:border-indigo-500:focus {
+  border-color: #6366f1;
+}
+
+/* Transition effects */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Disabled states */
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+
+.disabled\:bg-gray-400:disabled {
+  background-color: #9ca3af;
+}

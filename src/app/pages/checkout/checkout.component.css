@@ -1,0 +1,62 @@
+/* Checkout component specific styles */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form validation styles */
+.border-red-300 {
+  border-color: #fca5a5;
+}
+
+.text-red-600 {
+  color: #dc2626;
+}
+
+/* Focus states */
+.focus\:ring-indigo-500:focus {
+  --tw-ring-color: #6366f1;
+}
+
+.focus\:border-indigo-500:focus {
+  border-color: #6366f1;
+}
+
+/* Hover states */
+.hover\:bg-indigo-700:hover {
+  background-color: #4338ca;
+}
+
+/* Disabled states */
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+
+/* Security notice styles */
+.bg-green-50 {
+  background-color: #f0fdf4;
+}
+
+.text-green-800 {
+  color: #166534;
+}
+
+.text-green-700 {
+  color: #15803d;
+}
+
+.text-green-400 {
+  color: #4ade80;
+}

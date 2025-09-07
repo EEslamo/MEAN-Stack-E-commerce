@@ -1,0 +1,67 @@
+<div class="min-h-screen bg-gray-50 p-6">
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-900 mb-8">Manage Orders</h1>
+    
+    <div *ngIf="loading" class="flex justify-center items-center py-12">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+    </div>
+
+    <div *ngIf="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+      {{ error }}
+    </div>
+
+    <div *ngIf="!loading && !error" class="bg-white rounded-lg shadow overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h2 class="text-lg font-semibold text-gray-900">All Orders</h2>
+      </div>
+      
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order #</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr *ngFor="let order of orders">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                #{{ order.orderNumber }}
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">{{ order.customerInfo.name }}</div>
+                <div class="text-sm text-gray-500">{{ order.customerInfo.email }}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                ${{ order.totalAmount | number:'1.2-2' }}
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full"
+                      [ngClass]="{
+                        'bg-yellow-100 text-yellow-800': order.status === 'pending',
+                        'bg-blue-100 text-blue-800': order.status === 'preparing',
+                        'bg-green-100 text-green-800': order.status === 'shipped',
+                        'bg-gray-100 text-gray-800': order.status === 'delivered',
+                        'bg-red-100 text-red-800': order.status === 'cancelled'
+                      }">
+                  {{ order.status | titlecase }}
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                {{ order.createdAt | date:'short' }}
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <button class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                <button class="text-green-600 hover:text-green-900">Update</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

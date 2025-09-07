@@ -1,0 +1,47 @@
+/* FAQ component specific styles */
+
+/* Details/Summary styling */
+details[open] summary {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Smooth transitions */
+.group-open\:rotate-180 {
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Hover states */
+.hover\:bg-gray-50:hover {
+  background-color: #f9fafb;
+}
+
+.hover\:bg-indigo-700:hover {
+  background-color: #4338ca;
+}
+
+/* Category badge styles */
+.bg-indigo-100 {
+  background-color: #e0e7ff;
+}
+
+.text-indigo-800 {
+  color: #3730a3;
+}
+
+/* Focus states */
+.focus\:ring-indigo-500:focus {
+  --tw-ring-color: #6366f1;
+}
+
+.focus\:border-indigo-500:focus {
+  border-color: #6366f1;
+}
+
+/* Support section styles */
+.bg-indigo-50 {
+  background-color: #eef2ff;
+}
+
+.text-indigo-400 {
+  color: #818cf8;
+}

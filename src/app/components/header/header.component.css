@@ -1,0 +1,65 @@
+/* Header component specific styles */
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.group:hover .group-hover\:visible {
+  visibility: visible;
+}
+
+.group-submenu:hover .group-hover-submenu\:opacity-100 {
+  opacity: 1;
+}
+
+.group-submenu:hover .group-hover-submenu\:visible {
+  visibility: visible;
+}
+
+/* Mobile menu animations */
+.mobile-menu-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.mobile-menu-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* User menu animations */
+.user-menu-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.user-menu-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Cart badge animation */
+.cart-badge {
+  animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-3px);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
